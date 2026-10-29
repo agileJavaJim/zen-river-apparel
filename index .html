@@ -1,0 +1,972 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zen River | Peace, Love, and a Touch of Menace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #111827;
+      --bg-slate: #17262b;
+      --text-white: #ffffff;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --accent-glow: rgba(255, 255, 255, 0.05);
+      --border-accent: rgba(255, 255, 255, 0.25);
+      --font-primary: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 76px;
+      font-family: var(--font-primary);
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+    }
+
+    body {
+      padding-top: 76px;
+      background-color: var(--bg-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 76px;
+      background-color: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .brand-logo img {
+      height: 42px;
+      width: 42px;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-weight: 900;
+      font-size: 1.35rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-white);
+    }
+
+    .placeholder-cta {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--text-white);
+      background: transparent;
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .placeholder-cta:hover {
+      background: var(--text-white);
+      color: var(--bg-dark);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 76px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background-color: var(--bg-slate);
+    }
+
+    .hero-bg-wrapper {
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero-bg-wrapper div {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      z-index: 10;
+      padding: 3rem 2rem;
+      background: rgba(23, 38, 43, 0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-accent);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    /* Core Values / Pillars */
+    .pillars-section {
+      padding: 5rem 2rem;
+      background-color: var(--bg-dark);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillar-card {
+      background-color: var(--bg-slate);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-subtle);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-accent);
+    }
+
+    .pillar-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-white);
+    }
+
+    .pillar-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Products Section */
+    .products-section {
+      padding: 6rem 2rem;
+      background-color: var(--bg-dark);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background-color: var(--bg-slate);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-6px);
+    }
+
+    .product-image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #0b111e;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-details {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .product-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background-color: transparent;
+      border: 1px solid var(--text-white);
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.25s ease;
+    }
+
+    .product-action:hover {
+      background-color: var(--text-white);
+      color: var(--bg-dark);
+    }
+
+    /* Visual Aesthetic Banner */
+    .aesthetic-banner {
+      position: relative;
+      padding: 6rem 2rem;
+      background-color: var(--bg-slate);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .banner-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .banner-bg div {
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner-content {
+      position: relative;
+      max-width: 800px;
+      z-index: 5;
+    }
+
+    .banner-quote {
+      font-size: 1.85rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+    .banner-tag {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Showcase Collection Section */
+    .showcase-section {
+      padding: 6rem 2rem;
+      background-color: var(--bg-dark);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .showcase-item {
+      background-color: var(--bg-slate);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .showcase-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background-color: #0d1518;
+    }
+
+    .showcase-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .showcase-caption {
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .showcase-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-white);
+    }
+
+    /* Ethos / Philosophy Section */
+    .ethos-section {
+      padding: 6rem 2rem;
+      background-color: var(--bg-slate);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .ethos-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .ethos-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .ethos-paragraph {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .ethos-visual {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--border-accent);
+      background-color: var(--bg-dark);
+    }
+
+    .ethos-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #0b101b;
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-logo-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .footer-heading {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.25s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--text-white);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-subtle);
+      transition: border-color 0.25s ease;
+    }
+
+    .footer-store-btn:hover {
+      border-color: var(--text-white);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+      .ethos-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        padding: 0 1rem;
+      }
+
+      .nav-menu {
+        display: none; /* Keep layout clean on mobile */
+      }
+
+      .hero {
+        padding: 3rem 1rem;
+      }
+
+      .hero-content {
+        padding: 2rem 1.25rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .banner-quote {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header class="site-header">
+    <a href="#" class="brand-logo">
+      <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/8S5yNlDva-veyUrmknoO5O?authuser=0" alt="Zen River Emblem">
+      <span class="brand-title">Zen River</span>
+    </a>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="#featured" class="nav-link">Featured Gear</a></li>
+        <li><a href="#apparel" class="nav-link">Irreverent Apparel</a></li>
+        <li><a href="#lifestyle" class="nav-link">Gothic Living</a></li>
+        <li><a href="#ethos" class="nav-link">Our Philosophy</a></li>
+      </ul>
+    </nav>
+
+    <!-- Top-right CTA: now points to the Zen River Publishing site -->
+    <a href="https://agilejavajim.github.io/zen-river-publishing/" target="_blank" class="placeholder-cta">[Your link here]</a>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-bg-wrapper">
+        <div data-alt="A breathtaking dark sacred geometry backdrop featuring kaleidoscopic mandala patterns in deep dark teal, rich violet, and burnished gold. Delicate geometric lines overlay a dark textured slate background. Ambient luminous lighting with sharp intricate detail, capturing an atmosphere of mystical mindfulness and cosmic symbolism. No text, signage, or lettering." style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/8IY2dD5hQhM0RQ4aOLPOks?authuser=0'); background-size: cover; background-position: center;"></div>
+      </div>
+      <div class="hero-content">
+        <span class="hero-badge">Apparel &amp; Lifestyle Brand</span>
+        <h1 class="hero-title">Peace, Love, &amp; A Touch of Menace</h1>
+        <p class="hero-subtitle">
+          Zen River creates graphic apparel, home decor, drinkware, and yoga accessories. A blend of funny mindfulness quotes, gothic artwork, and spiritual graphics for individuals seeking expressive design.
+        </p>
+      </div>
+    </section>
+
+    <!-- Brand Core Values -->
+    <section class="pillars-section">
+      <div class="section-header">
+        <span class="section-eyebrow">The Triad</span>
+        <h2 class="section-title">Core Values</h2>
+      </div>
+
+      <div class="pillars-grid">
+        <article class="pillar-card">
+          <i class="fa-solid fa-om pillar-icon"></i>
+          <h3 class="pillar-title">Mindfulness</h3>
+          <p class="pillar-desc">
+            Rooted in presence, breath, and inner awareness. Bringing spiritual graphics and sacred iconography to your daily rituals.
+          </p>
+        </article>
+
+        <article class="pillar-card">
+          <i class="fa-solid fa-face-grin-tongue-wink pillar-icon"></i>
+          <h3 class="pillar-title">Humor</h3>
+          <p class="pillar-desc">
+            Sarcastic, playful, and completely unpretentious. Because true enlightenments doesn't take itself too seriously.
+          </p>
+        </article>
+
+        <article class="pillar-card">
+          <i class="fa-solid fa-pen-nib pillar-icon"></i>
+          <h3 class="pillar-title">Self-Expression</h3>
+          <p class="pillar-desc">
+            Bold, modern trend-led design featuring gothic mystique, cosmic mythology, and kaleidoscopic geometry.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Featured Products Section (Official 6 Products) -->
+    <section id="featured" class="products-section">
+      <div class="section-header">
+        <span class="section-eyebrow">Official Collection</span>
+        <h2 class="section-title">Visionary Essentials</h2>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9LvAtZY2s453dtRvbL4_os?authuser=0" alt="Visionary Hawk Beach Towel" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Hawk Beach Towel</h3>
+            <p class="product-description">
+              The visionary hawk, mandala, wolf and deer on a dark ground, for beach days with presence and a little edge. A beach towel, in 30" x 60" and 36" x 72".
+            </p>
+            <a href="https://zen-river.printify.me/product/33505173" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/arSyDXxo_B28dQHBjgW_jq?authuser=0" alt="Visionary Owl Beach Towel" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Owl Beach Towel</h3>
+            <p class="product-description">
+              The visionary owl, mandala, fox and bear on a dark ground, for beach days with presence and a little edge. A beach towel, in 30" x 60" and 36" x 72".
+            </p>
+            <a href="https://zen-river.printify.me/product/33505166" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9VtkG2dVOST0339QQndOh0?authuser=0" alt="Visionary Elephant Beach Towel" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Elephant Beach Towel</h3>
+            <p class="product-description">
+              The visionary elephant on a dark ground, for beach days with presence and a little edge. A beach towel, in 30" x 60" and 36" x 72".
+            </p>
+            <a href="https://zen-river.printify.me/product/33505158" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/aV2TTNgyN79b_hXhUxcOzP?authuser=0" alt="Visionary Mandala Desk Mat" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Mandala Desk Mat</h3>
+            <p class="product-description">
+              The visionary mandala panorama as a desk mat — meditating silhouette at the heart of a violet mandala, with owl, fox and deer woven through jewel-toned vines. Peace, love, and a touch of the wild. A 32" x 16" neoprene desk mat.
+            </p>
+            <a href="https://zen-river.printify.me/product/33504307" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9cSbyTjkyv09mxN1u4NOYg?authuser=0" alt="Visionary Hawk Yoga Mat" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Hawk Yoga Mat</h3>
+            <p class="product-description">
+              The visionary hawk, mandala, wolf and deer on a dark ground, for practice with presence and a little edge. A 24" x 72" rubber yoga mat.
+            </p>
+            <a href="https://zen-river.printify.me/product/33503992" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product-card">
+          <div class="product-image-container">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/98MXQtMd1igfuYkMXb3k7b?authuser=0" alt="Visionary Owl Yoga Mat" class="product-image">
+          </div>
+          <div class="product-details">
+            <h3 class="product-name">Visionary Owl Yoga Mat</h3>
+            <p class="product-description">
+              The visionary owl, mandala, fox and bear on a dark ground, for practice with presence and a little edge. A 24" x 72" rubber yoga mat.
+            </p>
+            <a href="https://zen-river.printify.me/product/33503792" target="_blank" class="product-action">
+              <span>View Product</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Aesthetic Ambient Divider -->
+    <section class="aesthetic-banner">
+      <div class="banner-bg">
+        <div data-alt="A moody atmospheric scene of smooth dark river stones stacked in harmony beside soft flowing water, illuminated by faint glowing violet and deep cyan ethereal light. Misty reflections and subtle geometric light rays create an aura of tranquil mystery and irreverent peace. No text, signage, or lettering." style="background-image: url('https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/a6rbQtpDuRS5_4F19Nn_--?authuser=0'); background-size: cover; background-position: center;"></div>
+      </div>
+      <div class="banner-content">
+        <blockquote class="banner-quote">
+          "Mindfulness doesn't mean being quiet when things get absurd. It means observing the chaos with a smirk."
+        </blockquote>
+        <span class="banner-tag">Expressive • Sarcastic • Mindful</span>
+      </div>
+    </section>
+
+    <!-- Irreverent Graphic Apparel -->
+    <section id="apparel" class="showcase-section">
+      <div class="section-header">
+        <span class="section-eyebrow">Wear Your Vibe</span>
+        <h2 class="section-title">Irreverent Graphic Apparel</h2>
+      </div>
+
+      <div class="showcase-grid">
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9Xbl8kJZmVAbsbq9iMdOyB?authuser=0" alt="Peace Love &amp; A Touch of Menace Shirt">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Peace, Love &amp; A Touch of Menace</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9ruZavaeXMy4LLUzqbfOwU?authuser=0" alt="Inner Peace Outer Chaos Skeleton Shirt">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Inner Peace. Outer Chaos.</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9uh11aFGYTJaFd966ei4nu?authuser=0" alt="Quietly Judging Your Vibe Tee">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Quietly Judging Your Vibe</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/aCVloQm5EYB9JLKEabX40-?authuser=0" alt="Inhale Exhale Winking Monk Tee">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Inhale Good / Exhale Bullshit</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/8n71htNGovo0SBccgZpOgn?authuser=0" alt="Namaste Away From Me Shirt">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Namaste Away From Me</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9FUhfK7RfJk7sJt2qBb4tW?authuser=0" alt="Gothic Wings &amp; Roses Hoodie">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Gothic Wings &amp; Roses Hoodie</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gothic Home Decor & Drinkware -->
+    <section id="lifestyle" class="showcase-section" style="border-top: 1px solid var(--border-subtle);">
+      <div class="section-header">
+        <span class="section-eyebrow">Gothic Mystique &amp; Sacred Accessories</span>
+        <h2 class="section-title">Home Decor &amp; Drinkware</h2>
+      </div>
+
+      <div class="showcase-grid">
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9ZnPtIOohyd8uxLRcKck6_?authuser=0" alt="Gothic Raven Tote Bag">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Raven &amp; Skull Canvas Tote</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/bb66WJSY-A88qm7SuBw__3?authuser=0" alt="Gothic Raven Stainless Water Bottle">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Raven &amp; Skull Drinkware</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/9zTSQjBMJKXeD_4lwSHOej?authuser=0" alt="Gothic Raven Moon Cushion">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Raven &amp; Full Moon Pillow</h3>
+          </div>
+        </article>
+
+        <article class="showcase-item">
+          <div class="showcase-img-wrap">
+            <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/8CXrCdb2VCRbjqRiQo8kQJ?authuser=0" alt="Gothic Raven Skull Workspace Setup">
+          </div>
+          <div class="showcase-caption">
+            <h3 class="showcase-title">Gothic Raven Desk Setup</h3>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Ethos / Brand Positioning Section -->
+    <section id="ethos" class="ethos-section">
+      <div class="ethos-container">
+        <div class="ethos-text-block">
+          <span class="section-eyebrow">Our Ethos</span>
+          <h2 class="section-title">Mindfulness With An Edge</h2>
+          <p class="ethos-paragraph">
+            Zen River is an online apparel and lifestyle brand catering to individuals who value authenticity over fake smiles. We combine sacred iconography, cosmic mythology, and gothic artwork with sharp, playful humor.
+          </p>
+          <p class="ethos-paragraph">
+            Whether you are unrolling a mandala yoga mat on a dark hardwood floor or sipping tea from a gothic raven tumbler, our designs offer a distinct identity—modern, expressive, and unapologetically bold.
+          </p>
+        </div>
+
+        <div class="ethos-visual">
+          <img src="https://labs.google.com/pomelli_downloads/websites/9uJ89HpmmT67p96BFsukWE/resources/bNkRxpqYPyp2EkGiyuAOJb?authuser=0" alt="Dark sacred geometric textures" data-alt="Close-up macro shot of dark polished obsidian stone etched with intricate sacred geometry lines and delicate botanical flourishes. Subtle moody lighting highlights the glossy surface reflections and fine carved details in dark slate and silver tone. No text, signage, or lettering.">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="footer-logo-title">Zen River</span>
+        <p class="footer-desc">
+          Peace, love, and a touch of menace. Modern graphic apparel, yoga mats, totes, drinkware, and home decor for the mindfully irreverent.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#featured" class="footer-link">Featured Gear</a></li>
+          <li><a href="#apparel" class="footer-link">Irreverent Apparel</a></li>
+          <li><a href="#lifestyle" class="footer-link">Gothic Living</a></li>
+          <li><a href="#ethos" class="footer-link">Our Philosophy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Storefront</h4>
+        <p class="footer-desc" style="margin-bottom: 1rem;">
+          Explore the full range of Zen River products directly on Printify.
+        </p>
+        <a href="https://zen-river.printify.me/" target="_blank" class="footer-store-btn">
+          <span>Visit Main Shop</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© Zen River. All rights reserved.</p>
+      <p>Mindfulness • Humor • Self-Expression</p>
+    </div>
+  </footer>
+
+</body></html>
